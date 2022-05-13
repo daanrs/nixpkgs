@@ -5,6 +5,7 @@
 , protonvpn-nm-lib
 , pythondialog
 , dialog
+, networkmanager
 }:
 
 buildPythonApplication rec {
@@ -22,6 +23,7 @@ buildPythonApplication rec {
   };
 
   propagatedBuildInputs = [
+    networkmanager
     protonvpn-nm-lib
     pythondialog
     dialog
