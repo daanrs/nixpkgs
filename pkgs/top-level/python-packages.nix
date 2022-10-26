@@ -608,6 +608,10 @@ in {
 
   arabic-reshaper = callPackage ../development/python-modules/arabic-reshaper { };
 
+  arcade = callPackage ../development/python-modules/arcade {
+    # pymunk = self.pymunk_5_6;
+  } ;
+
   arcam-fmj = callPackage ../development/python-modules/arcam-fmj { };
 
   archinfo = callPackage ../development/python-modules/archinfo { };
@@ -2781,6 +2785,10 @@ in {
   et_xmlfile = callPackage ../development/python-modules/et_xmlfile { };
 
   ev3dev2 = callPackage ../development/python-modules/ev3dev2 { };
+
+  ev3dev2simulator = callPackage ../development/python-modules/ev3dev2simulator { } ;
+
+  ev3devlogging = callPackage ../development/python-modules/ev3devlogging { } ;
 
   evdev = callPackage ../development/python-modules/evdev { };
 
@@ -7587,6 +7595,8 @@ in {
     inherit (pkgs.darwin.apple_sdk.frameworks) ApplicationServices;
   };
 
+  pymunk_5_6 = callPackage ../development/python-modules/pymunk_5_6 { };
+
   pymupdf = callPackage ../development/python-modules/pymupdf { };
 
   PyMVGLive = callPackage ../development/python-modules/pymvglive { };
@@ -8632,6 +8642,8 @@ in {
   pytibber = callPackage ../development/python-modules/pytibber { };
 
   pytile = callPackage ../development/python-modules/pytile { };
+
+  pytiled-parser = callPackage ../development/python-modules/pytiled-parser { };
 
   pytimeparse = callPackage ../development/python-modules/pytimeparse { };
 
