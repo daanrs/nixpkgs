@@ -20080,8 +20080,7 @@ with pkgs;
   openssl = openssl_1_1;
 
   inherit (callPackages ../development/libraries/openssl { })
-    openssl_1_1
-    openssl_3;
+    openssl_1_1;
 
   opensubdiv = callPackage ../development/libraries/opensubdiv { };
 
@@ -22147,7 +22146,6 @@ with pkgs;
 
   nginxStable = callPackage ../servers/http/nginx/stable.nix {
     zlib = zlib-ng.override { withZlibCompat = true; };
-    openssl = openssl_3;
     withPerl = false;
     # We don't use `with` statement here on purpose!
     # See https://github.com/NixOS/nixpkgs/pull/10474#discussion_r42369334
@@ -22156,7 +22154,6 @@ with pkgs;
 
   nginxMainline = callPackage ../servers/http/nginx/mainline.nix {
     zlib = zlib-ng.override { withZlibCompat = true; };
-    openssl = openssl_3;
     withKTLS = true;
     withPerl = false;
     # We don't use `with` statement here on purpose!
