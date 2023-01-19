@@ -4,22 +4,8 @@
 , less
 , fetchFromGitHub
 }:
-let
-  py = python3.override {
-    packageOverrides = self: super: {
-      awscrt = super.awscrt.overridePythonAttrs (oldAttrs: rec {
-        version = "0.13.11";
-        src = self.fetchPypi {
-          inherit (oldAttrs) pname;
-          inherit version;
-          sha256 = "sha256-Yx3I3RD57Nx6Cvm4moc5zmMbdsHeYiMghDfbQUor38E=";
-        };
-      });
-    };
-  };
 
-in
-with py.pkgs; buildPythonApplication rec {
+python3.pkgs.buildPythonApplication rec {
   pname = "awscli2";
   version = "2.7.20"; # N.B: if you change this, check if overrides are still up-to-date
 
@@ -30,7 +16,7 @@ with py.pkgs; buildPythonApplication rec {
     sha256 = "sha256-o6rs9OMP3154WApboSqUfVn3TRxap0htHczyjAMQe2I=";
   };
 
-  propagatedBuildInputs = [
+  propagatedBuildInputs = with python3.pkgs; [
     awscrt
     bcdoc
     colorama
@@ -49,7 +35,7 @@ with py.pkgs; buildPythonApplication rec {
     urllib3
   ];
 
-  checkInputs = [
+  checkInputs = with python3.pkgs; [
     jsonschema
     mock
     pytestCheckHook
@@ -86,7 +72,7 @@ with py.pkgs; buildPythonApplication rec {
     rm $out/bin/aws.cmd
   '';
 
-  passthru.python = py; # for aws_shell
+  passthru.python = python3; # for aws_shell
 
   meta = with lib; {
     homepage = "https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html";
