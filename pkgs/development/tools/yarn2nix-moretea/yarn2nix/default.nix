@@ -58,7 +58,6 @@ in rec {
     "--offline"
     "--frozen-lockfile"
     "--ignore-engines"
-    "--ignore-scripts"
   ];
 
   mkYarnModules = {
